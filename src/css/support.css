@@ -1,0 +1,141 @@
+/* Support.css */
+.support-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+    position: relative;
+  }
+  
+  .shape-left, .shape-right {
+    position: absolute;
+    width: 70px;
+    height: 90px;
+    background-color: #226fbd;
+    opacity: 0.9;
+    z-index: 0;
+  }
+  
+  .shape-left {
+    top: 68%;
+    left: 225px;
+    transform: translateY(-50%) rotate(-20deg);
+    background-color: rgb(62, 100, 172);
+    border-radius: 10% 50% 20% 50% 
+  }
+  
+  .shape-right {
+    top: 25%;
+    right: 217px;
+    border-radius: 30% 10% 40% 60%;
+    transform: translateY(-50%) rotate(-15deg);
+    background-color:rgb(81, 180, 45);
+  }
+  
+  .support-container {
+    position: relative;
+    z-index: 1;
+    background: white;
+    border-radius: 10px;
+    width: 70%;
+    padding: 30px 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  .support-container {
+    position: relative;
+    z-index: 1; /* Ensure it's above the shapes */
+  }
+  
+  
+  .support-content {
+    max-width: 60%;
+  }
+  
+  .support-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #003366;
+
+  }
+  
+  .support-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  .contact-button {
+    background-color: rgb(240, 147, 60);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 1;
+  }
+  
+  .contact-button:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+  }
+  @media (max-width: 992px) {
+  .support-container {
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+    padding: 25px 20px;
+  }
+
+  .support-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contact-button {
+    justify-content: center;
+  }
+
+  .shape-left, .shape-right {
+    width: 80px;
+    height: 100px;
+  }
+
+  .shape-left {
+    left: 20px;
+    top: 85%;
+    transform: translateY(-50%) rotate(-10deg);
+  }
+
+  .shape-right {
+    right: 20px;
+    top: 10%;
+    transform: translateY(-50%) rotate(-10deg);
+  }
+}
+
+@media (max-width: 576px) {
+  .support-title {
+    font-size: 1rem;
+  }
+
+  .support-text {
+    font-size: 0.85rem;
+  }
+
+  .contact-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .shape-left,
+  .shape-right {
+    display: none; /* Optional: hide shapes on very small screens */
+  }
+}

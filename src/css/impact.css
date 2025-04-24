@@ -1,0 +1,281 @@
+/* Impact section */
+.browser-bar {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 5px 5px 0 0;
+  background-color: #fff;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.url-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-buttons {
+  display: flex;
+  margin-right: 10px;
+}
+
+.nav-button {
+  width: 24px;
+  height: 24px;
+  background-color: #e5e5e5;
+  border-radius: 50%;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.address {
+  flex-grow: 1;
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar {
+  display: flex;
+  margin-left: 10px;
+}
+
+.tool-button {
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+}
+
+.main-content {
+  background-color: #2854a9;
+  color: white;
+  padding: 50px 20px;
+  position: relative;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  width: 40%;
+}
+
+.grid-image {
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  height: 170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-image img {
+  width: 100%;
+  max-height: 100%;
+}
+/* For the specific grid images you want to modify */
+.grid-image:nth-child(2),
+.grid-image:nth-child(3) {
+  background-color: transparent;
+  transform: scale(0.9);
+  transform-origin: center;
+}
+
+/* If you want to add some margin to center them better after scaling */
+.grid-image:nth-child(2) img,
+.grid-image:nth-child(3) img {
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.text-content {
+  width: 50%;
+}
+
+h1 {
+  font-size: 23px;
+  font-weight:300;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight:300;
+  color: rgb(240, 147, 60);
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-box {
+  padding-right: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-box:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 14px;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  clip-path: polygon(0 100%, 100% 100%, 100% 20%, 0 100%);
+}
+
+
+
+.cursor {
+  display: inline-block;
+  color:rgb(254, 190, 97);
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.scroll-icon {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Tablets (<= 992px) */
+@media (max-width: 992px) {
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .image-grid,
+  .text-content {
+    width: 100%;
+  }
+
+  .stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .stat-box {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .stat-box:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Mobile (<= 600px) */
+@media (max-width: 600px) {
+  .main-content {
+    padding: 40px 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .grid-image {
+    height: 140px;
+  }
+
+  .scroll-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .wave {
+    height: 30px;
+  }
+}
