@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import '../css/news.css';
-// You would replace these with your actual imports
+import { useParams, Link } from 'react-router-dom';
+import './style/news-detail.css';
+import { ArrowLeft, Calendar, User, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
+
+// Import your images
 import newsImage1 from '../asset/WhatsApp-Image-2020-05-20-at-12.40.04-PM-min.jpg';
 import newsImage2 from '../asset/PAS_8726-min-scaled.jpg';
 import newsImage3 from '../asset/IMG_4421.jpg';
-import newsImage4 from '../asset/Patrick-B-Nsenga.jpg'; 
+import newsImage4 from '../asset/Patrick-B-Nsenga.jpg';
 import newsImage5 from '../asset/IMG_4164-min-scaled.jpg';
 import newsImage6 from '../asset/IMG_4520-scaled.jpg';
 import moto from '../asset/moto.jpeg';
 
-function News() {
-  // Sample news data - replace with your actual data 
-  // Added complete content for each news item, similar to insights
+function NewsDetailPage() {
+  const { id } = useParams(); // Get the ID from the URL
+  const [newsItem, setNewsItem] = useState(null);
+  const [email, setEmail] = useState('');
+  const [relatedNews, setRelatedNews] = useState([]);
+  const [subscribeStatus, setSubscribeStatus] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  // Sample news data - should match the same data structure as in the News component
   const allNewsItems = [
     {
       id: 1,
       image: newsImage1,
       title: "AC Group to expand services beyond Kigali",
       description: "AC Group Ltd, a Rwandan tech firm providing smart transport solutions, last week unveil...",
-      date: "MAR 09",
+      date: "March 09, 2024",
+      author: "Patrick Buchana",
+      category: "Expansion",
       content: `
         <p>AC Group Ltd, a Rwandan tech firm providing smart transport solutions, last week unveiled plans to expand its operations beyond Kigali to other provinces in Rwanda and potentially to neighboring countries in the East African region.</p>
         
@@ -42,14 +52,17 @@ function News() {
         <p>"We believe in building local capacity," said Buchana. "When we enter a new market, we hire locally and provide training to ensure that our systems are maintained and supported by people who understand the local context."</p>
         
         <p>The company has already begun recruiting staff for its new operations in other Rwandan provinces and expects to be fully operational in these areas by the end of the year.</p>
-      `
+      `,
+      tags: ["Green Initiative", "Public Transport", "Environmental Sustainability", "LPG", "Carbon Emissions"]
     },
     {
       id: 2,
-      image: newsImage5,
+      image: moto,
       title: "Rwandan tech company, AC Group invests Rwf3b in taxi moto solutions",
       description: "AC Group, a Rwandan tech firm enabling payment in public transport recently debuted into...",
-      date: "MAR 09",
+      date: "March 12, 2024",
+      author: "Collins Mwai",
+      category: "Investment",
       content: `
         <p>AC Group, the technology company behind Rwanda's popular Tap&Go payment system, has invested 3 billion Rwandan francs (approximately $3 million) in developing and implementing digital solutions for the country's motorcycle taxi sector.</p>
         
@@ -70,14 +83,17 @@ function News() {
         <p>"By digitizing payments, we're creating a financial footprint for moto operators, which can help them access loans and other financial services," explained Buchana. "We've already partnered with several financial institutions that are willing to offer products specifically designed for operators who use our system."</p>
         
         <p>The company has also reached agreements with insurance providers to offer more affordable coverage for moto operators who join the Tap&Go network.</p>
-      `
+      `,
+      tags: ["Carbon Emissions", "Public Health", "Economic Benefits", "Urban Transport", "Air Quality"]
     },
     {
       id: 3,
       image: newsImage6,
       title: "Tap&Go and the myth that surrounds it",
       description: "AC Group Ltd is a Rwandan tech firm providing smart transport solutions that help ease...",
-      date: "MAR 09",
+      date: "March 09, 2024",
+      author: "Patrick Buchana",
+      category: "Improvement to Society",
       content: `
         <p>Since its introduction in 2015, AC Group's Tap&Go payment system has transformed public transport in Rwanda, particularly in Kigali. However, despite its widespread adoption and benefits, several misconceptions continue to circulate about the service. This article aims to address some of these myths and provide clarity on how the system actually works.</p>
         
@@ -96,14 +112,17 @@ function News() {
         <p>"We understand why this perception exists," says Buchana. "Network connectivity can sometimes drop, just like it happens with mobile phones, but our technical team works around the clock to maintain connectivity."</p>
         
         <p>According to data from AC Group, buses in Kigali collectively use over 81.6 terabytes of data per month, suggesting that many passengers are indeed connecting to and using the WiFi service. The Rwanda Utilities Regulatory Authority (RURA) also monitors the service through a dashboard and regular inspections.</p>
-      `
+      `,
+      tags: ["Carbon Emissions", "Public Health", "Economic Benefits", "Urban Transport", "Air Quality"]
     },
     {
       id: 4,
       image: newsImage3,
       title: "AC Group launches new mobile app",
       description: "The new mobile application allows users to top up their Tap&Go cards directly from their phones...",
-      date: "MAR 15",
+      date: "March 15, 2024",
+      author: "Jean Claude Mugisha",
+      category: "Technology",
       content: `
         <p>AC Group, the company behind Rwanda's popular Tap&Go transport payment system, has launched a new mobile application that significantly expands the functionality available to users.</p>
         
@@ -124,14 +143,17 @@ function News() {
         <p><strong>Route Planning:</strong> Information on available bus routes, including estimated journey times and fare costs.</p>
         
         <p>"This app transforms the Tap&Go card from a simple payment tool into a comprehensive mobility solution," Buchana explained. "Users now have more control over their transport spending and more information to help them plan their journeys effectively."</p>
-      `
+      `,
+      tags: ["Mobile App", "Technology", "Digital Payments", "Public Transport", "User Experience"]
     },
     {
       id: 5,
       image: newsImage2,
       title: "Partnership announced with local transportation authority",
       description: "AC Group has signed a five-year contract to expand their services to more regions...",
-      date: "APR 02",
+      date: "April 02, 2024",
+      author: "Diane Uwamahoro",
+      category: "Partnership",
       content: `
         <p>AC Group has signed a significant five-year partnership agreement with the Rwanda Transport Development Agency (RTDA) to expand its digital payment and fleet management systems to intercity bus services across the country.</p>
         
@@ -154,14 +176,17 @@ function News() {
         <p><strong>Guaranteed Seat Reservation:</strong> The system includes seat reservation capabilities, reducing overcrowding and enhancing passenger comfort.</p>
         
         <p><strong>Real-time Information:</strong> Travelers can access up-to-date information on bus schedules, delays, and estimated arrival times.</p>
-      `
+      `,
+      tags: ["Government Partnership", "Intercity Transport", "Digital Infrastructure", "Rural Connectivity", "Transport Policy"]
     },
     {
       id: 6,
       image: newsImage4,
       title: "International recognition for innovative transport solutions",
       description: "AC Group has been recognized at the Global Transport Innovation Awards for their Tap&Go system...",
-      date: "APR 18",
+      date: "April 18, 2024",
+      author: "Eric Mugisha",
+      category: "Innovation",
       content: `
         <p>AC Group, the Rwandan technology company behind the Tap&Go digital payment system for public transport, has received international recognition at the prestigious Global Transport Innovation Awards held in Barcelona, Spain.</p>
         
@@ -180,123 +205,236 @@ function News() {
         <p>"What impressed us about the Tap&Go system was how it addresses multiple challenges simultaneously," noted the chairperson of the awards committee. "It's not just a payment solution; it's a comprehensive approach to transport management that generates valuable data for urban planning while improving the daily experience for commuters."</p>
         
         <p>The recognition comes as AC Group continues to expand its operations both within Rwanda and to neighboring countries. The company recently began pilot projects in Tanzania and Cameroon, adapting its technology to meet local needs and conditions.</p>
-      `
+      `,
+      tags: ["Global Award", "Innovation", "African Tech", "Urban Mobility", "International Recognition"]
     }
   ];
 
-  // State to track the first visible card index
-  const [startIndex, setStartIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [slideDirection, setSlideDirection] = useState('next'); // 'next' or 'prev'
-  const cardsToShow = 3; // Show 3 cards at once
-
-  // Move to previous slide
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    
-    setSlideDirection('prev');
-    setIsTransitioning(true);
-    
-    setTimeout(() => {
-      setStartIndex((prevIndex) => {
-        if (prevIndex === 0) {
-          return allNewsItems.length - 1;
-        }
-        return prevIndex - 1;
-      });
-    }, 50); // Small delay before changing the actual content
-  };
-
-  // Move to next slide
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    
-    setSlideDirection('next');
-    setIsTransitioning(true);
-    
-    setTimeout(() => {
-      setStartIndex((prevIndex) => {
-        if (prevIndex + 1 >= allNewsItems.length) {
-          return 0;
-        }
-        return prevIndex + 1;
-      });
-    }, 50); // Small delay before changing the actual content
-  };
-
-  // Reset transition state after animation completes
   useEffect(() => {
-    if (isTransitioning) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 600); // Match this to the CSS transition duration
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isTransitioning]);
+    // Convert string ID to number
+    const numericId = parseInt(id, 10);
+    
+    // Set loading state
+    setLoading(true);
+    
+    // Find the news item with the matching ID
+    const foundNewsItem = allNewsItems.find(item => item.id === numericId);
+    
+    // Find related news items (excluding the current one)
+    const related = allNewsItems
+      .filter(item => item.id !== numericId)
+      .sort(() => 0.5 - Math.random()) // Randomly shuffle
+      .slice(0, 3); // Get 3 random items
+    
+    // Simulate data fetching delay for demonstration
+    setTimeout(() => {
+      setNewsItem(foundNewsItem);
+      setRelatedNews(related);
+      setLoading(false);
+    }, 300);
+  }, [id]);
 
-  // Get current visible news items (wrapping around if needed)
-  const getVisibleNews = () => {
-    const visibleItems = [];
-    for (let i = 0; i < cardsToShow; i++) {
-      const index = (startIndex + i) % allNewsItems.length;
-      visibleItems.push(allNewsItems[index]);
-    }
-    return visibleItems;
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
-  const visibleNews = getVisibleNews();
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubscribeStatus('Please enter a valid email address');
+      return;
+    }
+    
+    // Here you would typically send this to your backend
+    console.log('Subscribed with email:', email);
+    setSubscribeStatus('Thank you for subscribing!');
+    setEmail('');
+    
+    // Clear success message after 3 seconds
+    setTimeout(() => {
+      setSubscribeStatus('');
+    }, 3000);
+  };
+
+  // Handle share functionality
+  const handleShare = (platform) => {
+    const url = window.location.href;
+    const title = newsItem?.title || 'AC Group News';
+    
+    let shareUrl;
+    switch(platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        break;
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+        break;
+      default:
+        shareUrl = '';
+    }
+    
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="news-detail-loading">
+        <div className="loading-spinner"></div>
+        <p>Loading article...</p>
+      </div>
+    );
+  }
+
+  if (!newsItem) {
+    return (
+      <div className="news-detail-error">
+        <h2>Article Not Found</h2>
+        <p>Sorry, the article you're looking for cannot be found.</p>
+        <Link to="/news" className="back-to-news">
+          <ArrowLeft size={16} />
+          Back to News
+        </Link>
+      </div>
+    );
+  }
 
   return (
-    <section className="news-section">
-      <div className="container">
-        <h2 className="news-title">Latest News</h2>
-        <p className="news-subtitle">
-          AC Group has been featured in both local and international media.<br />
-          See what others are saying about us.
-        </p>
-        
-        <div className="news-slider-container">
-          <div className="news-navigation left-nav">
-            <div className={`nav-button ${isTransitioning ? 'disabled' : ''}`} onClick={prevSlide}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
+    <div className="news-detail-container">
+      {/* Header Section */}
+      <div className="news-detail-header">
+        <div className="container">
+          <Link to="/insights" className="back-link">
+            <ArrowLeft size={16} />
+            <span>Back to Insights</span>
+          </Link>
+          <div className="category-badge">{newsItem.category}</div>
+        </div>
+      </div>
+
+      {/* Article Hero Section */}
+      <div className="article-hero">
+        <div className="container">
+          <h1 className="article-title">{newsItem.title}</h1>
+          
+          <div className="article-meta">
+            <div className="meta-item">
+              <Calendar size={16} />
+              <span>{newsItem.date}</span>
+            </div>
+            <div className="meta-item">
+              <User size={16} />
+              <span>{newsItem.author}</span>
             </div>
           </div>
           
-          <div className={`news-grid ${isTransitioning ? 'transitioning' : ''} slide-${slideDirection}`}>
-            {visibleNews.map((item, index) => (
-              <Link 
-                to={`/news/${item.id}`}
-                key={item.id} 
-                className={`news-card ${index % 2 === 0 ? 'even' : 'odd'} ${index === 2 ? 'third' : ''}`}
-              >
-                <div className="news-image">
-                  <img src={item.image} alt={`AC Group News ${index + 1}`} />
-                </div>
-                <div className="news-content">
-                  <h3 className="news-card-title">{item.title}</h3>
-                  <p className="news-card-description">
-                    {item.description}
-                  </p>
-                  <div className="news-date">{item.date}</div>
-                </div>
-              </Link>
-            ))}
+          <div className="article-image">
+            <img src={newsItem.image} alt={newsItem.title} />
           </div>
-          
-          <div className="news-navigation right-nav">
-            <div className={`nav-button ${isTransitioning ? 'disabled' : ''}`} onClick={nextSlide}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
+        </div>
+      </div>
+
+      {/* Article Content Section */}
+      <div className="article-content-section">
+        <div className="container">
+          <div className="article-layout">
+            <div className="article-main">
+              <div className="article-content" dangerouslySetInnerHTML={{ __html: newsItem.content }}></div>
+              
+              {newsItem.tags && (
+                <div className="article-tags">
+                  {newsItem.tags.map((tag, index) => (
+                    <span key={index} className="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+              
+              <div className="article-share">
+                <p className="share-title"><Share2 size={16} /> Share this article</p>
+                <div className="share-buttons">
+                  <button onClick={() => handleShare('facebook')} className="share-button facebook">
+                    <Facebook size={16} />
+                  </button>
+                  <button onClick={() => handleShare('twitter')} className="share-button twitter">
+                    <Twitter size={16} />
+                  </button>
+                  <button onClick={() => handleShare('linkedin')} className="share-button linkedin">
+                    <Linkedin size={16} />
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div className="article-sidebar">
+              <div className="sidebar-section">
+                <h3 className="sidebar-title">Related Articles</h3>
+                <div className="related-articles">
+                  {relatedNews.map(item => (
+                    <Link to={`/insights/${item.id}`} key={item.id} className="related-article">
+                      <div className="related-image">
+                        <img src={item.image} alt={item.title} />
+                      </div>
+                      <div className="related-content">
+                        <h4 className="related-title">{item.title}</h4>
+                        <p className="related-date">{item.date}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="sidebar-section">
+                <h3 className="sidebar-title">Subscribe to Our Newsletter</h3>
+                <div className="sidebar-newsletter">
+                  <p>Get the latest news and updates from AC Group delivered to your inbox.</p>
+                  <form className="newsletter-form" onSubmit={handleSubscribe}>
+                    <input 
+                      type="email" 
+                      placeholder="Your email address" 
+                      value={email} 
+                      onChange={handleEmailChange}
+                      required 
+                    />
+                    <button type="submit">Subscribe</button>
+                    {subscribeStatus && <p className="subscribe-status">{subscribeStatus}</p>}
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+
+      {/* More News Section */}
+      <div className="more-news-section">
+        <div className="container">
+          <h2 className="section-title">More News</h2>
+          <div className="more-news-grid">
+            {relatedNews.map(item => (
+              <Link to={`/insighits/${item.id}`} key={item.id} className="news-card">
+                <div className="news-card-image">
+                  <img src={item.image} alt={item.title} />
+                </div>
+                <div className="news-card-content">
+                  <h3 className="news-card-title">{item.title}</h3>
+                  <p className="news-card-date">{item.date}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="view-all-news">
+            <Link to="/insighits" className="view-all-button">View All News</Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default News;
+export default NewsDetailPage;

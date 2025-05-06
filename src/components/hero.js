@@ -29,8 +29,8 @@ function Hero() {
       <div className="container hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="innovation">Innovation.</span> <span className="impact">Impact.</span><br />
-            <span className="community">Community.</span>
+            <span className="innovation">Innovation</span> <span className="impact">Impact</span><br />
+            <span className="community">Community</span>
           </h1>
           <p className="hero-description">
             AC Group is a technology company providing smart transport solutions in Rwanda and 

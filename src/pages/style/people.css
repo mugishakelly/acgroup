@@ -1,0 +1,238 @@
+/* PeoplePage.css */
+
+.people{
+  background-color: #f8f9fa;
+}
+.people-page {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+  .people-page h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #14284b;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+  
+  .people-description {
+    text-align: center;
+    max-width: 500px;
+    color: rgb(134, 154, 191);
+    margin-bottom: 60px;
+    line-height: 1.6;
+    
+  }
+  
+  .team-grid {
+    background-color: #f8f9fa;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 5%;
+    
+  }
+  
+  /* Team member card */
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: white; /* Optional: consistent background */
+    border: 1px solid #e0e0e0; /* Optional: subtle border */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Image wrapper with fixed height */
+  .member-image {
+    width: 100%;
+    height: 250px; /* Fixed height for uniformity */
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover; /* Ensure image fills box neatly */
+    display: block;
+  }
+  
+  /* Info section with flexible height */
+  .member-info {
+    background-color: #173057;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Ensures this section expands if needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .member-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .member-info p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    opacity: 0.9;
+  }
+/* Support.css */
+.support-section {
+    padding: 80px;
+    background-color: white;
+    position: relative;
+    width: 100%;
+  }
+  
+  .shape-left, .shape-right {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    background-color: #226fbd;
+    opacity: 0.9;
+    z-index: 0;
+  }
+  
+  .shape-left {
+    top: 69%;
+    left: 120px;
+    transform: translateY(-50%) rotate(-20deg);
+    background-color: rgb(62, 100, 172);
+    border-radius: 10% 50% 20% 50% 
+  }
+  
+  .shape-right {
+    top: 25%;
+    right: 124px;
+    border-radius: 30% 10% 40% 60%;
+    transform: translateY(-50%) rotate(-15deg);
+    background-color:rgb(81, 180, 45);
+  }
+  
+  .support-container {
+    position: relative;
+    z-index: 1;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    padding: 30px 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  .support-container {
+    position: relative;
+    z-index: 1; /* Ensure it's above the shapes */
+  }
+  
+  
+  .support-content {
+    max-width: 60%;
+  }
+  
+  .support-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    width: 100%;
+    font-weight: 600;
+    color: #003366;
+
+  }
+  
+  .support-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+
+  }
+  
+  .contact-button {
+    background-color: rgb(240, 147, 60);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 1;
+  }
+  
+  .contact-button:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+  }
+  @media (max-width: 992px) {
+  .support-container {
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+    padding: 25px 20px;
+  }
+
+  .support-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contact-button {
+    justify-content: center;
+  }
+
+  .shape-left, .shape-right {
+    width: 80px;
+    height: 100px;
+  }
+
+  .shape-left {
+    left: 20px;
+    top: 85%;
+    transform: translateY(-50%) rotate(-10deg);
+  }
+
+  .shape-right {
+    right: 20px;
+    top: 10%;
+    transform: translateY(-50%) rotate(-10deg);
+  }
+}
+
+@media (max-width: 576px) {
+  .support-title {
+    font-size: 1rem;
+  }
+
+  .support-text {
+    font-size: 0.85rem;
+  }
+
+  .contact-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .shape-left,
+  .shape-right {
+    display: none; /* Optional: hide shapes on very small screens */
+  }
+}
+
+  
+  

@@ -1,0 +1,345 @@
+/* TapAndGoGreen specific styles */
+
+.green-container {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Hero Section - Dark blue with diamond pattern and green section */
+  .green-hero {
+    display: flex;
+    min-height: 450px;
+    overflow: hidden;
+  }
+  
+  .green-hero-left {
+    width: 50%;
+    background-color: #003a5d; /* Dark blue background */
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+  }
+  
+  .green-hero-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(0, 70, 114, 0.7),
+      rgba(0, 70, 114, 0.7) 10px,
+      rgba(0, 58, 93, 0.7) 10px,
+      rgba(0, 58, 93, 0.7) 20px
+    );
+    z-index: 1;
+  }
+  
+  .green-hero-left .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+  
+  .green-hero-left .hero-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: lighter;
+  }
+  
+  .green-hero-left .hero-text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .green-hero-left .hero-tagline {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .green-hero-right {
+    width: 50%;
+    background-color: #4caf50; /* Green background */
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .green-logo-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    padding: 20px;
+  }
+  
+  .go-green-text {
+    margin-bottom: 30px;
+    color: white;
+  }
+  
+  .go-text {
+    font-size: 56px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  
+  .green-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+  }
+  
+  .green-subtitle {
+    font-size: 16px;
+    margin-top: 10px;
+    max-width: 300px;
+  }
+  
+  .green-bus-image {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .powered-by {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+  }
+  
+  .sun-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .powered-text {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  
+  /* Key Benefits Section */
+  .key-benefits-section {
+    padding: 80px 0;
+    background-color: #003a5d; /* Dark blue background */
+    color: white;
+    text-align: center;
+  }
+  
+  .benefits-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+  }
+  
+  .benefits-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
+  
+  .benefit-item {
+    width: 40%;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .benefit-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .benefit-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Gallery Section */
+  .green-gallery-section {
+    padding: 80px 0;
+    background-color: white;
+  }
+  
+  .gallery-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  
+  .gallery-images {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .gallery-image-row {
+    margin-bottom: 5px;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .green-impact-content {
+    width: 60%;
+    padding-left: 60px;
+  }
+  
+  .green-impact-content .impact-title {
+    font-size: 22px;
+    font-weight: lighter;
+    color: #003a5d;
+    margin-bottom: 20px;
+  }
+  
+  .green-impact-content .impact-description {
+    font-size: 14px;
+    line-height: 1.6;
+    width: 60%;
+    color:#4B5563;
+    margin-bottom: 30px;
+  }
+  
+  .green-stats {
+    display: flex;
+  }
+  
+  .green-stat-box {
+    margin-right: 40px;
+  }
+  
+  .green-stat-box .stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #003a5d;
+    margin-bottom: 5px;
+  }
+  
+  .green-stat-box .stat-label {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Latest Update Section */
+  .latest-update-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .update-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #003a5d;
+    margin-bottom: 40px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .green-hero {
+      flex-direction: column;
+    }
+    
+    .green-hero-left,
+    .green-hero-right {
+      width: 100%;
+    }
+    
+    .green-hero-right {
+      padding: 50px 30px;
+    }
+    
+    .benefits-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .benefit-item {
+      width: 80%;
+      margin-bottom: 40px;
+    }
+    
+    .gallery-container {
+      flex-direction: column;
+    }
+    
+    .gallery-images {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    
+    .green-impact-content {
+      width: 100%;
+      padding-left: 0;
+      text-align: center;
+    }
+    
+    .green-stats {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .green-hero-left {
+      padding: 30px 20px;
+    }
+    
+    .green-hero-left .hero-content {
+      max-width: 100%;
+      padding-top: 20px;
+    }
+    
+    .green-hero-left .hero-title {
+      font-size: 28px;
+    }
+    
+    .go-text, .green-text {
+      font-size: 36px;
+    }
+    
+    .green-subtitle {
+      font-size: 14px;
+    }
+    
+    .benefits-title {
+      font-size: 24px;
+    }
+    
+    .benefit-title {
+      font-size: 20px;
+    }
+    
+    .green-impact-content .impact-title {
+      font-size: 26px;
+    }
+    
+    .green-stat-box .stat-number {
+      font-size: 28px;
+    }
+  }

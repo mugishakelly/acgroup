@@ -1,0 +1,56 @@
+.customers-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .customers-page h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #14284b;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+  
+  .customers-description {
+    text-align: center;
+    max-width: 500px;
+    color: rgb(134, 154, 191);
+    margin-bottom: 60px;
+    line-height: 1.6;
+  }
+  
+  .customer-logos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .logo-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .logo-container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 150px;
+  }
+  
+  .logo-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  

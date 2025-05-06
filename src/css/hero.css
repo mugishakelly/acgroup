@@ -19,9 +19,12 @@
   }
   
   .hero-title {
-    font-size: 2rem;
+    font-size: 1rem;
     margin-bottom: 20px;
     line-height: 1.2;
+    width: 60%;
+    position: relative;
+    left: -3%;
   }
   
   .innovation {
@@ -34,6 +37,8 @@
   
   .community {
     color: rgb(254, 190, 97);
+    position: relative;
+    right: 17%;
   }
   
   .hero-description {
@@ -42,6 +47,7 @@
     color:rgb(134, 154, 191);
     margin-bottom: 30px;
     width: 70%;
+    left: 2%;
   }
   
   .learn-more {

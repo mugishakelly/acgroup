@@ -31,6 +31,17 @@
     transition: color 0.3s;
     font-size: 11pt;
   }
+  .dropdown-link {
+ color: rgb(77, 97, 136);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 11pt;
+    text-decoration: none;
+  }
+  .dropdown-link:hover {
+    color: rgb(37, 47, 66);
+  }
+  
   
   nav ul li a:hover {
     color:rgb(37, 47, 66) ;
